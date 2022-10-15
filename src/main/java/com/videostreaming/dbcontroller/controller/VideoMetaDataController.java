@@ -14,7 +14,10 @@ public class VideoMetaDataController {
     public VideoMetaDataController(IVidDao vidDao) {
         this.vidDao = vidDao;
     }
-
+    @GetMapping("/test")
+    public String sayHello(){
+        return "hello";
+    }
     @GetMapping("/")
     public List<VidMetaData> getVideos() {
         return vidDao.getVideosMetaData();
