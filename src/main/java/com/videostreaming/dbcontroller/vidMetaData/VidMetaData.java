@@ -1,22 +1,39 @@
-package com.videostreaming.dbcontroller.dao;
+package com.videostreaming.dbcontroller.vidMetaData;
 
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.*;
+
+@Table(
+        name = "videos",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "vid_url_unique" , columnNames = "url")
+        }
+)
+@Entity
+@AllArgsConstructor
+@ToString
 public class VidMetaData {
+    @Id
     private int id;
+    @Column(
+            nullable = false
+    )
     private String vidName;
     private String vidDescription;
+    @Column(
+            nullable = false
+    )
     private String url;
+    @Column(
+            nullable = false
+    )
     private String publisher;
 
     public VidMetaData() {
     }
 
-    public VidMetaData(int id, String vidName, String vidDescription, String url, String publisher) {
-        this.id = id;
-        this.vidName = vidName;
-        this.vidDescription = vidDescription;
-        this.url = url;
-        this.publisher = publisher;
-    }
 
     public int getId() {
         return id;
