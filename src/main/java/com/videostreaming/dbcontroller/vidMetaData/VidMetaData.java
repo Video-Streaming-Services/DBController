@@ -1,19 +1,21 @@
 package com.videostreaming.dbcontroller.vidMetaData;
 
 import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Table(
+        name = "videos",
         uniqueConstraints = {
                 @UniqueConstraint(name = "vid_url_unique" , columnNames = "url")
         }
 )
 @Entity
 @AllArgsConstructor
+@ToString
 public class VidMetaData {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     @Column(
             nullable = false
